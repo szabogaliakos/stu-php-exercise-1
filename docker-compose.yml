@@ -1,0 +1,8 @@
+version: '2'
+services:
+  webserver:
+    image: webdevops/php-apache-dev
+    ports:
+      - "8080:80"
+    volumes:
+      - C:\Repositories\STUNITED\stu-php-exercise-1\src/:/var/www/html
