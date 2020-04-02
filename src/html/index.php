@@ -1,3 +1,13 @@
+<?php
+    if (isset($_GET["input_area"]) && $_GET["input_area"]){
+        $area = $_GET["input_area"];
+        $radius = sqrt($area / pi());
+    }
+    else if (isset($_GET["input_radius"]) && $_GET["input_radius"]){
+        $radius = $_GET["input_radius"];
+        $area = $radius * $radius * pi();
+    }
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -14,15 +24,15 @@
     <section>
         <div class="container">
             <h1>Circle</h1>
-            <form name="circle_form" action="../php/Circle.php" onsubmit="return validateForm()">
+            <form name="circle_form" action="index.php" onsubmit="return validateForm()">
                 <div id="group-parameters" class="form-group">
                     <div class="form-group">
                         <label for="input_area">Superficies</label>
-                        <input type="number" min="0" class="form-control" name="input_area" id="input_area"  placeholder="Enter superficies">
+                        <input type="number" min="0" class="form-control" name="input_area" id="input_area" value="<?php echo round($area,2) ?>" placeholder="Enter superficies">
                     </div>
                     <div class="form-group">
                         <label for="input_radius">Radius</label>
-                        <input type="number" min="0" class="form-control" name="input_area" id="input_radius" placeholder="Enter radius">
+                        <input type="number" min="0" class="form-control" name="input_radius" id="input_radius" value="<?php echo round($radius,2) ?>" placeholder="Enter radius">
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
